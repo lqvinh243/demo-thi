@@ -4,20 +4,8 @@
     <template>
       <b-row>
         <b-col cols="4">
-          <b-card
-            title="De thi tin hoc"
-            align="center"
-            tag="article"
-            style="max-width: 20rem"
-            class="mb-2"
-          >
-            <b-card-text> Nguoi dang : Admin </b-card-text>
-            <b-card-text> So cau : 2 </b-card-text>
-            <b-card-text>
-              Thoi gian : {{ durationMinute }}:{{ mapDurationSecond }}
-            </b-card-text>
-          </b-card>
-          <b-card   align="center" class="mb-2" style="max-width: 20rem">
+          <TestInfo :testInfo="testInfo" />
+          <b-card align="center" class="mb-2" style="max-width: 20rem">
             <b-card-text> Guest </b-card-text>
           </b-card>
 
@@ -55,13 +43,13 @@
                   variant="danger"
                   :disabled="disabledPre"
                   @click="pre()"
-                  >Truoc do</b-button
+                  >Câu trước</b-button
                 >
                 <b-button
                   variant="success"
                   :disabled="disabledNext"
                   @click="next()"
-                  >Ke tiep</b-button
+                  >Câu kế</b-button
                 >
               </div>
             </div>
@@ -75,55 +63,44 @@
 <script>
 import ContestTest from "~/components/ContentTest";
 import StartTest from "~/components/StartTest";
+import TestInfo from "~/components/TestInfo";
 import data from "~/test.json";
 export default {
   components: {
     ContestTest,
     StartTest,
+    TestInfo,
   },
   data() {
     return {
       selected: [], // Must be an array reference!
-      durationMinute: 15,
-      durationSecond: 0,
       questions: data.questions,
       selectdQuestion: {},
-      totalQuestion: 0,
       indexSelect: 0,
       timer: null,
       isStart: false,
+      testInfo: {
+        durationMinute: 15,
+        durationSecond: 0,
+        totalQuestion: 0,
+      },
     };
   },
   computed: {
     disabledNext() {
-      return this.indexSelect + 1 === this.totalQuestion;
+      return this.indexSelect + 1 === this.testInfo.totalQuestion;
     },
     disabledPre() {
       return this.indexSelect === 0;
     },
-    mapDurationSecond() {
-      return this.durationSecond < 10
-        ? `0${this.durationSecond}`
-        : this.durationSecond;
-    },
-    mapDurationMinute() {
-      return this.durationMinute < 10
-        ? `0${this.durationMinute}`
-        : this.durationMinute;
-    },
   },
   mounted() {
-    console.log(data);
     const indexDefault = 0;
-    this.totalQuestion = this.questions.length;
+    this.testInfo.totalQuestion = this.questions.length;
     this.selectdQuestion = this.questions[indexDefault];
     this.indexSelect = indexDefault;
   },
   methods: {
-    isDisabled(fruit) {
-      const { selectedFruit } = this;
-      return selectedFruit.length === 1 && selectedFruit[0] === fruit.name;
-    },
     check() {
       const item = this.selected[this.selected.length - 1];
       this.selected = [];
@@ -144,12 +121,12 @@ export default {
       }
     },
     start() {
-      if (this.durationSecond === 0) {
-        this.durationMinute -= 1;
-        this.durationSecond = 59;
-      } else this.durationSecond--;
+      if (this.testInfo.durationSecond === 0) {
+        this.testInfo.durationMinute -= 1;
+        this.testInfo.durationSecond = 59;
+      } else this.testInfo.durationSecond--;
 
-      if (this.durationMinute === 0) {
+      if (this.testInfo.durationMinute === 0) {
         clearInterval(this.timer);
       }
     },
@@ -160,7 +137,7 @@ export default {
     finishTest() {
       const data = JSON.stringify(this.questions);
       window.localStorage.setItem("test", data);
-      this.$router.push('/test-result');
+      this.$router.push("/test-result");
     },
   },
 };

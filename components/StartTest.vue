@@ -8,14 +8,14 @@
         style="max-width: 20rem"
       >
         <b-button href="#" variant="primary" @click="startTest()"
-          >Bat dau lam bai</b-button
+          >Bắt đầu làm bài</b-button
         >
       </b-card>
       <template v-if="isStart">
         <div>
           <b-card align="center" class="mb-2" style="max-width: 20rem">
             <b-button href="#" variant="danger" @click="finishTest()"
-              >Nop bai</b-button
+              >Nộp bài</b-button
             >
           </b-card>
         </div>
@@ -29,7 +29,7 @@
         style="max-width: 20rem"
       >
         <b-button href="#" variant="primary" @click="tryAgain()"
-          >Thu lai</b-button
+          >Thử lại</b-button
         >
       </b-card>
     </div>

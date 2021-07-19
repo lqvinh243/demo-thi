@@ -1,17 +1,35 @@
 <template>
-  <b-card title="Ket qua" class="mb-2">
+  <b-card title="Kết quả" class="mb-2">
     <b-row>
       <b-col>
-        <p>So cau dung : {{ result && result.numberOfCorrect }}</p>
-        <p>So cau sai : {{ result && result.numberOfWrong }}</p>
-        <p>So cau chua lam : {{ result && result.numberOfNotCompl }}</p>
         <p>
-          Xep loai: {{ result && result.score >= 0.5 ? "Dat" : "Chua dat" }}
+          Số câu đúng :<span style="font-weight: bold">
+            {{ result && result.numberOfCorrect }}</span
+          >
+        </p>
+        <p>
+          Số câu sai :<span style="font-weight: bold">
+            {{ result && result.numberOfWrong }}</span
+          >
+        </p>
+        <p>
+          Số câu chưa làm :
+          <span style="font-weight: bold">{{
+            result && result.numberOfNotCompl
+          }}</span>
+        </p>
+        <p>
+          Xếp loại:
+          <span style="font-weight: bold">
+            {{ result && result.score >= 0.5 ? "Đạt" : "Chưa đạt" }}</span
+          >
         </p>
       </b-col>
       <b-col style="text-align: center">
-        <p>Diem</p>
-        <p>{{ result && result.score * 10 }}</p>
+        <p>Điểm số</p>
+        <p style="font-size: 40px; font-weight: bol">
+          {{ result && result.score * 10 }}
+        </p>
       </b-col>
     </b-row>
   </b-card>

@@ -11,6 +11,7 @@
           name="flavour-2a"
           @change="check"
           stacked
+          :disabled="isShowAns"
         >
           <b-form-checkbox
             v-for="(item, index) in questionData.options"
@@ -76,6 +77,12 @@ export default {
 </script>
 <style scoped>
 * >>> .active {
-  color: darkgreen;
+  color: darkgreen !important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+* >>> .active > label {
+  text-decoration: underline;
 }
 </style>
