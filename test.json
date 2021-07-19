@@ -1,0 +1,58 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "content": "Tra loi cau hoi sau:",
+            "options": [
+                {
+                    "text": "Orange",
+                    "value": "orange",
+                    "isCorrect": true
+                },
+                {
+                    "text": "Apple",
+                    "value": "apple",
+                    "isCorrect": false
+                },
+                {
+                    "text": "Pineapple",
+                    "value": "pineapple",
+                    "isCorrect": false
+                },
+                {
+                    "text": "Grape",
+                    "value": "grape",
+                    "isCorrect": false
+                }
+            ],
+            "selectedValue": ""
+        },
+        {
+            "id": 2,
+            "content": "Hom nay an mon gi:",
+            "options": [
+                {
+                    "text": "Com",
+                    "value": "com",
+                    "isCorrect": false
+                },
+                {
+                    "text": "Tao",
+                    "value": "tao",
+                    "isCorrect": false
+                },
+                {
+                    "text": "Chuoi",
+                    "value": "chuoi",
+                    "isCorrect": true
+                },
+                {
+                    "text": "Sua",
+                    "value": "sua",
+                    "isCorrect": false
+                }
+            ],
+            "selectedValue": ""
+        }
+    ]
+}

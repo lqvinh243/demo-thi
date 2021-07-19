@@ -17,38 +17,25 @@
               Thoi gian : {{ durationMinute }}:{{ mapDurationSecond }}
             </b-card-text>
           </b-card>
-          <b-card   align="center" class="mb-2" style="max-width: 20rem">
+          <b-card align="center" class="mb-2" style="max-width: 20rem">
             <b-card-text> Guest </b-card-text>
           </b-card>
 
-          <StartTest @startTest="startTest" @finishTest="finishTest" />
+          <StartTest
+            @startTest="startTest"
+            @finishTest="finishTest"
+            :isTryAgain="true"
+          />
         </b-col>
         <b-col>
-          <b-card
-            title="Huong dan lam bai thi"
-            align="center"
-            tag="article"
-            class="mb-2"
-            v-if="!isStart"
-          >
-            <b-card-text>
-              <ol>
-                <li>Nhan nut bat dau de lam bai thi</li>
-                <li>O moi cau hoi chon dap an dung</li>
-                <li>
-                  Het thoi gian lam bai he thong se tu thu bai.Ban co the nop
-                  bai truoc khi thoi gian ket thuc bang cach nhan nut
-                  <b>Nop bai</b>
-                </li>
-              </ol>
-            </b-card-text>
-          </b-card>
-          <template v-if="isStart">
+          <TestResult :result="result" />
+          <template>
             <div>
               <ContestTest
                 :question="selectdQuestion"
                 :index="indexSelect"
                 @updateSelect="updateSelect"
+                :isShowAns="true"
               />
               <div class="mt-4">
                 <b-button
@@ -73,6 +60,7 @@
 </template>
 
 <script>
+import TestResult from "~/components/TestResult";
 import ContestTest from "~/components/ContentTest";
 import StartTest from "~/components/StartTest";
 import data from "~/test.json";
@@ -80,18 +68,25 @@ export default {
   components: {
     ContestTest,
     StartTest,
+    TestResult,
   },
   data() {
     return {
       selected: [], // Must be an array reference!
       durationMinute: 15,
       durationSecond: 0,
-      questions: data.questions,
+      questions: [],
       selectdQuestion: {},
       totalQuestion: 0,
       indexSelect: 0,
       timer: null,
       isStart: false,
+      result: {
+        numberOfCorrect: 0,
+        numberOfWrong: 0,
+        numberOfNotCompl: 0,
+        score: 0,
+      },
     };
   },
   computed: {
@@ -113,11 +108,22 @@ export default {
     },
   },
   mounted() {
-    console.log(data);
+    this.questions = JSON.parse(window.localStorage.getItem("test"));
     const indexDefault = 0;
     this.totalQuestion = this.questions.length;
     this.selectdQuestion = this.questions[indexDefault];
     this.indexSelect = indexDefault;
+    this.result.numberOfCorrect = this.questions.filter(
+      (item) =>
+        item.selectedValue ===
+        item.options.find((ii) => ii.isCorrect === true).value
+    ).length;
+    this.result.numberOfWrong =
+      this.questions.length - this.result.numberOfCorrect;
+    this.result.numberOfNotCompl = this.questions.filter(
+      (item) => item.selectedValue === ""
+    ).length;
+    this.result.score = this.result.numberOfCorrect / this.totalQuestion;
   },
   methods: {
     isDisabled(fruit) {
@@ -160,7 +166,7 @@ export default {
     finishTest() {
       const data = JSON.stringify(this.questions);
       window.localStorage.setItem("test", data);
-      this.$router.push('/test-result');
+      console.log(JSON.parse(window.localStorage.getItem("test")));
     },
   },
 };
