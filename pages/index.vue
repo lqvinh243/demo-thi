@@ -13,7 +13,7 @@
         </b-col>
         <b-col>
           <b-card
-            title="Huong dan lam bai thi"
+            title="Hướng dẫn làm bài thi"
             align="center"
             tag="article"
             class="mb-2"
@@ -21,12 +21,11 @@
           >
             <b-card-text>
               <ol>
-                <li>Nhan nut bat dau de lam bai thi</li>
-                <li>O moi cau hoi chon dap an dung</li>
+                <li>Nhấn nút bắt đầu để làm bài thi</li>
+                <li>Ở mỗi câu hỏi chọn đáp án đúng</li>
                 <li>
-                  Het thoi gian lam bai he thong se tu thu bai.Ban co the nop
-                  bai truoc khi thoi gian ket thuc bang cach nhan nut
-                  <b>Nop bai</b>
+                  Hết thời gian làm bài hệ thống sẽ tự thu bài.Bạn có thể nộp bài trước khi thời gian kết thúc bằng cách nhấn nút 
+                  <b>Nộp bài</b>
                 </li>
               </ol>
             </b-card-text>
