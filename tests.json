@@ -1,0 +1,839 @@
+[
+    {
+        "id": 1,
+        "time": 10,
+        "name": "Đề thi loại dễ",
+        "slug": "de-thi-loai-de",
+        "infomation": "Bài kiểm tra loại dễ, bạn có 10 phút để làm bài!",
+        "questions": [
+            {
+                "id": 1,
+                "content": "Who are all ________ people?",
+                "options": [
+                    {
+                        "text": "this",
+                        "value": "this",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "those",
+                        "value": "those",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "them",
+                        "value": "them",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "that",
+                        "value": "that",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 2,
+                "content": "Claude is ________.",
+                "options": [
+                    {
+                        "text": "Frenchman",
+                        "value": "frenchman",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "a French",
+                        "value": "a french",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "a Frenchman",
+                        "value": "a frenchman",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "French man",
+                        "value": "french man",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 3,
+                "content": "I ____ a car next year.",
+                "options": [
+                    {
+                        "text": "buy",
+                        "value": "buy",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "am buying",
+                        "value": "am buying",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "going to buy",
+                        "value": "going to buy",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "bought",
+                        "value": "bought",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 4,
+                "content": "They are all ________ ready for the party.",
+                "options": [
+                    {
+                        "text": "getting",
+                        "value": "getting",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "going",
+                        "value": "going",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "doing",
+                        "value": "doing",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "putting",
+                        "value": "putting",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 5,
+                "content": "When do you go ________ bed?.",
+                "options": [
+                    {
+                        "text": "to",
+                        "value": "to",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "to the",
+                        "value": "to the",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "in",
+                        "value": "in",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "in the",
+                        "value": "in the",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 6,
+                "content": "London is famous for _____ red buses.",
+                "options": [
+                    {
+                        "text": "it’s",
+                        "value": "it’s",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "its",
+                        "value": "its",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "it",
+                        "value": "it",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "it is",
+                        "value": "it is",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 7,
+                "content": "Is there _____ milk in the fridge?",
+                "options": [
+                    {
+                        "text": "a lot",
+                        "value": "a lot",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "many",
+                        "value": "many",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "much",
+                        "value": "much",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "some",
+                        "value": "some",
+                        "isCorrect": true
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 8,
+                "content": "There is a flower shop in front _____ my house.",
+                "options": [
+                    {
+                        "text": "of",
+                        "value": "of",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "to",
+                        "value": "to",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "off",
+                        "value": "off",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "in",
+                        "value": "in",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 9,
+                "content": "Where are _____ children? – They go to school.",
+                "options": [
+                    {
+                        "text": "the",
+                        "value": "the",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "you",
+                        "value": "you",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "a",
+                        "value": "a",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "an",
+                        "value": "an",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 10,
+                "content": "Those students are working very _____ for their next exams.",
+                "options": [
+                    {
+                        "text": "hardly",
+                        "value": "hardly",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hard",
+                        "value": "hard",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "harder",
+                        "value": "harder",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hardest",
+                        "value": "hardest",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "time": 15,
+        "name": "Đề thi loại trung bình",
+        "slug": "de-thi-loai-trung-binh",
+        "infomation": "Bài kiểm tra loại trung bình, bạn có 15 phút để làm bài!",
+        "questions": [
+            {
+                "id": 1,
+                "content": "Jane _____ as a fashion designer for ten years before becoming a famous singer.",
+                "options": [
+                    {
+                        "text": "worked",
+                        "value": "worked",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "is working",
+                        "value": "is working",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "works",
+                        "value": "works",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "will work",
+                        "value": "will work",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 2,
+                "content": "Dan can _____ the drum very well.",
+                "options": [
+                    {
+                        "text": "play",
+                        "value": "play",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "do",
+                        "value": "do",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "make",
+                        "value": "make",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "think",
+                        "value": "think",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 3,
+                "content": "My friend is ______ so she has a lot of free time.",
+                "options": [
+                    {
+                        "text": "singer",
+                        "value": "singer",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "married",
+                        "value": "married",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "single",
+                        "value": "single",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "free",
+                        "value": "free",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 4,
+                "content": "I know somebody ________ can play the guitar.",
+                "options": [
+                    {
+                        "text": "he",
+                        "value": "he",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "who",
+                        "value": "who",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "what",
+                        "value": "what",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "that he",
+                        "value": "that he",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 5,
+                "content": "Did you ask your father ________ some money?",
+                "options": [
+                    {
+                        "text": "0",
+                        "value": "0",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "after",
+                        "value": "after",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "on",
+                        "value": "on",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "for",
+                        "value": "for",
+                        "isCorrect": true
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 6,
+                "content": "You look ________ in red!",
+                "options": [
+                    {
+                        "text": "most nicely",
+                        "value": "most nicely",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "too nice",
+                        "value": "too nice",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "nicely",
+                        "value": "nicely",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "very nice",
+                        "value": "very nice",
+                        "isCorrect": true
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 7,
+                "content": "We know their address, but they don’t know ________.",
+                "options": [
+                    {
+                        "text": "ours",
+                        "value": "ours",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "their’s",
+                        "value": "their’s",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "our’s",
+                        "value": "our’s",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "our",
+                        "value": "our",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 8,
+                "content": "Can you use ________ computer?",
+                "options": [
+                    {
+                        "text": "a",
+                        "value": "a",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "one",
+                        "value": "one",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "two",
+                        "value": "two",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "an",
+                        "value": "an",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 9,
+                "content": "Under no circumstances ________ or exchanged.",
+                "options": [
+                    {
+                        "text": "good will be returned",
+                        "value": "good will be returned",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "goods should be returned",
+                        "value": "goods should be ",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "can good be returned",
+                        "value": "can good be returned",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "are goods being returned",
+                        "value": "are goods being returned",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 10,
+                "content": "Frank ________ when he noticed a large packing case lying on the floor",
+                "options": [
+                    {
+                        "text": "has about to leave",
+                        "value": "has about to leave",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "had about to leave",
+                        "value": "had about to leave",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "is about to leave",
+                        "value": "is about to leave",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "was about to leave",
+                        "value": "was about to leave",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "time": 20,
+        "name": "Đề thi loại khó",
+        "slug": "de-thi-loai-kho",
+        "infomation": "Bài kiểm tra loại trung bình, bạn có 20 phút để làm bài!",
+        "questions": [
+            {
+                "id": 1,
+                "content": "She’s talking to you. Please listen to ________.",
+                "options": [
+                    {
+                        "text": "she",
+                        "value": "she",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hers",
+                        "value": "hers",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "her",
+                        "value": "her",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "him",
+                        "value": "him",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 2,
+                "content": "My cousin ________ bank manager.",
+                "options": [
+                    {
+                        "text": "is a",
+                        "value": "is a",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "makes",
+                        "value": "makes",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "is",
+                        "value": "is",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "he is",
+                        "value": "he is",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 3,
+                "content": "No, thank you, I don’t ________ sugar in tea.",
+                "options": [
+                    {
+                        "text": "take",
+                        "value": "take",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "put",
+                        "value": "put",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "eat",
+                        "value": "eat",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "drink",
+                        "value": "drink",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 4,
+                "content": "Don’t let your brothers ________ the present.",
+                "options": [
+                    {
+                        "text": "to see",
+                        "value": "to see",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "seeing",
+                        "value": "seeing",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "seen",
+                        "value": "seen",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "see",
+                        "value": "see",
+                        "isCorrect": true
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 5,
+                "content": "The murderer was ________ yesterday.",
+                "options": [
+                    {
+                        "text": "hanging",
+                        "value": "hanging",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hung",
+                        "value": "hung",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "hanged",
+                        "value": "hanged",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hang",
+                        "value": "hang",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 6,
+                "content": "What does he ________ for a living?",
+                "options": [
+                    {
+                        "text": "make",
+                        "value": "make",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "does",
+                        "value": "does",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "do",
+                        "value": "do",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "makes",
+                        "value": "makes",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 7,
+                "content": "Frede came to the meeting but Charles ________.",
+                "options": [
+                    {
+                        "text": "isn’t",
+                        "value": "isn’t",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "hasn’t",
+                        "value": "hasn’t",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "didn’t",
+                        "value": "didn’t",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "wasn’t",
+                        "value": "wasn’t",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 8,
+                "content": "The doctor showed the new nurse ________ to do.",
+                "options": [
+                    {
+                        "text": "what",
+                        "value": "what",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "that",
+                        "value": "that",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "how",
+                        "value": "how",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "as",
+                        "value": "as",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 9,
+                "content": "This luggage is quite similar to ________.",
+                "options": [
+                    {
+                        "text": "that one",
+                        "value": "that one",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "those",
+                        "value": "those",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "in additional",
+                        "value": "in additional",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "that",
+                        "value": "that",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            },
+            {
+                "id": 10,
+                "content": "He ________ newspapers for ten years.",
+                "options": [
+                    {
+                        "text": "is selling",
+                        "value": "is selling",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "sells",
+                        "value": "sells",
+                        "isCorrect": false
+                    },
+                    {
+                        "text": "has been selling",
+                        "value": "has been selling",
+                        "isCorrect": true
+                    },
+                    {
+                        "text": "has been sold",
+                        "value": "has been sold",
+                        "isCorrect": false
+                    }
+                ],
+                "selectedValue": ""
+            }
+        ]
+    }
+]

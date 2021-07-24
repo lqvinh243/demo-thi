@@ -4,22 +4,39 @@
     <template>
       <b-row>
         <b-col cols="4">
-          <TestInfo :testInfo="testInfo" />
+          <TestInfo :testInfo="testInfo" :isStart="isStart" />
           <b-card align="center" class="mb-2" style="max-width: 20rem">
             <b-card-text> Guest </b-card-text>
           </b-card>
 
-          <StartTest :isTryAgain="true" @tryAgain="tryAgain" />
+          <StartTest @startTest="startTest" @finishTest="finishTest" />
         </b-col>
         <b-col>
-          <TestResult :result="result" />
-          <template>
+          <b-card
+            title="Hướng dẫn làm bài thi"
+            align="center"
+            tag="article"
+            class="mb-2"
+            v-if="!isStart"
+          >
+            <b-card-text>
+              <ol>
+                <li>Nhấn nút bắt đầu để làm bài thi</li>
+                <li>Ở mỗi câu hỏi chọn đáp án đúng</li>
+                <li>
+                  Hết thời gian làm bài hệ thống sẽ tự thu bài.Bạn có thể nộp
+                  bài trước khi thời gian kết thúc bằng cách nhấn nút
+                  <b>Nộp bài</b>
+                </li>
+              </ol>
+            </b-card-text>
+          </b-card>
+          <template v-if="isStart">
             <div>
               <ContestTest
                 :question="selectdQuestion"
                 :index="indexSelect"
                 @updateSelect="updateSelect"
-                :isShowAns="true"
               />
               <div class="mt-4">
                 <b-button
@@ -44,15 +61,14 @@
 </template>
 
 <script>
-import TestResult from "~/components/TestResult";
 import ContestTest from "~/components/ContentTest";
 import StartTest from "~/components/StartTest";
 import TestInfo from "~/components/TestInfo";
+import dataTest from "~/tests.json";
 export default {
   components: {
     ContestTest,
     StartTest,
-    TestResult,
     TestInfo,
   },
   data() {
@@ -65,16 +81,11 @@ export default {
       indexSelect: 0,
       timer: null,
       isStart: false,
-      result: {
-        numberOfCorrect: 0,
-        numberOfWrong: 0,
-        numberOfNotCompl: 0,
-        score: 0,
-      },
       testInfo: {
         durationMinute: 15,
         durationSecond: 0,
         totalQuestion: 0,
+        title: "",
       },
     };
   },
@@ -85,41 +96,19 @@ export default {
     disabledPre() {
       return this.indexSelect === 0;
     },
-    mapDurationSecond() {
-      return this.durationSecond < 10
-        ? `0${this.durationSecond}`
-        : this.durationSecond;
-    },
-    mapDurationMinute() {
-      return this.durationMinute < 10
-        ? `0${this.durationMinute}`
-        : this.durationMinute;
-    },
   },
   mounted() {
-    this.dataTest = JSON.parse(window.localStorage.getItem("test"));
     const indexDefault = 0;
+    this.dataTest = dataTest.find(
+      (item) => item.id === parseFloat(this.$route.params.id)
+    );
+    this.testInfo.durationMinute = this.dataTest.time;
+    this.testInfo.title = this.dataTest.name;
     this.testInfo.totalQuestion = this.dataTest.questions.length;
     this.selectdQuestion = this.dataTest.questions[indexDefault];
     this.indexSelect = indexDefault;
-    this.result.numberOfCorrect = this.dataTest.questions.filter(
-      (item) =>
-        item.selectedValue ===
-        item.options.find((ii) => ii.isCorrect === true).value
-    ).length;
-    this.result.numberOfWrong =
-      this.dataTest.questions.length - this.result.numberOfCorrect;
-    this.result.numberOfNotCompl = this.dataTest.questions.filter(
-      (item) => item.selectedValue === ""
-    ).length;
-    this.result.score =
-      this.result.numberOfCorrect / this.testInfo.totalQuestion;
   },
   methods: {
-    isDisabled(fruit) {
-      const { selectedFruit } = this;
-      return selectedFruit.length === 1 && selectedFruit[0] === fruit.name;
-    },
     check() {
       const item = this.selected[this.selected.length - 1];
       this.selected = [];
@@ -139,8 +128,38 @@ export default {
         item.selectedValue = selectedValue;
       }
     },
-    tryAgain() {
-      this.$router.push(`/test/${this.dataTest.id}`);
+    start() {
+      if (this.testInfo.durationSecond === 0) {
+        this.testInfo.durationMinute -= 1;
+        this.testInfo.durationSecond = 59;
+      } else this.testInfo.durationSecond--;
+
+      if (this.testInfo.durationSecond === 0) {
+        clearInterval(this.timer);
+        alert("Hết giờ làm bài");
+        this.finishTest();
+      }
+    },
+    startTest() {
+      this.isStart = true;
+      this.timer = setInterval(() => this.start(), 1000);
+    },
+    finishTest() {
+      const data = JSON.stringify(this.dataTest);
+      window.localStorage.setItem("test", data);
+      const listTest = JSON.parse(window.localStorage.getItem("list-test"));
+      if (!listTest) {
+        const newList = [];
+        this.dataTest["date"] = new Date().getTime();
+        newList.push(this.dataTest);
+        window.localStorage.setItem("list-test", JSON.stringify(newList));
+      } else {
+        this.dataTest["date"] = new Date().getTime();
+        listTest.push(this.dataTest);
+        window.localStorage.setItem("list-test", JSON.stringify(listTest));
+      }
+
+      this.$router.push("/test-result");
     },
   },
 };

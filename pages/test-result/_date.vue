@@ -97,7 +97,12 @@ export default {
     },
   },
   mounted() {
-    this.dataTest = JSON.parse(window.localStorage.getItem("test"));
+    const date = this.$route.params.date;
+    if (!date) this.$router.push("/");
+    const listTest = JSON.parse(window.localStorage.getItem("list-test"));
+
+    this.dataTest = listTest.find((item) => item.date === parseFloat(date));
+
     const indexDefault = 0;
     this.testInfo.totalQuestion = this.dataTest.questions.length;
     this.selectdQuestion = this.dataTest.questions[indexDefault];

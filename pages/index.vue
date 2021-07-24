@@ -1,148 +1,95 @@
 <template>
-  <div class="container mt-4">
-    <template> </template>
-    <template>
+  <b-container class="mt-4">
+    <div>
       <b-row>
-        <b-col cols="4">
-          <TestInfo :testInfo="testInfo" />
-          <b-card align="center" class="mb-2" style="max-width: 20rem">
-            <b-card-text> Guest </b-card-text>
-          </b-card>
-
-          <StartTest @startTest="startTest" @finishTest="finishTest" />
-        </b-col>
-        <b-col>
-          <b-card
-            title="Hướng dẫn làm bài thi"
-            align="center"
-            tag="article"
-            class="mb-2"
-            v-if="!isStart"
-          >
-            <b-card-text>
-              <ol>
-                <li>Nhấn nút bắt đầu để làm bài thi</li>
-                <li>Ở mỗi câu hỏi chọn đáp án đúng</li>
-                <li>
-                  Hết thời gian làm bài hệ thống sẽ tự thu bài.Bạn có thể nộp bài trước khi thời gian kết thúc bằng cách nhấn nút 
-                  <b>Nộp bài</b>
-                </li>
-              </ol>
-            </b-card-text>
-          </b-card>
-          <template v-if="isStart">
-            <div>
-              <ContestTest
-                :question="selectdQuestion"
-                :index="indexSelect"
-                @updateSelect="updateSelect"
-              />
-              <div class="mt-4">
-                <b-button
-                  variant="danger"
-                  :disabled="disabledPre"
-                  @click="pre()"
-                  >Câu trước</b-button
-                >
-                <b-button
-                  variant="success"
-                  :disabled="disabledNext"
-                  @click="next()"
-                  >Câu kế</b-button
-                >
-              </div>
-            </div>
-          </template>
-        </b-col>
+        <b-col><h1>Chọn đề thi</h1></b-col>
+        <b-col><b-button class="float-right mt-2" @click="goHistory">Lịch sử làm bài</b-button></b-col>
       </b-row>
-    </template>
-  </div>
+      <div class="my-2">
+        <b-form-input
+          v-model="keyword"
+          placeholder="Tìm theo tên"
+          @change="find"
+        ></b-form-input>
+      </div>
+    </div>
+    <b-list-group>
+      <b-list-group-item v-for="(item, index) in tests" :key="index">
+        <p v-b-toggle="`collapse-${index}`" class="m-1">{{ item.name }}</p>
+        <!-- Element to collapse -->
+        <b-collapse :id="`collapse-${index}`">
+          <b-card :title="item.name" tag="article">
+            <b-card-text>
+              {{ item.infomation }}
+            </b-card-text>
+            <b-card-text>
+              Số câu hỏi: {{ item.questions.length }} câu.
+            </b-card-text>
+            <b-card-text> Thời gian {{ item.time }} phút. </b-card-text>
+            <b-button href="#" variant="primary" @click="playTest(item.id)"
+              >Go</b-button
+            >
+          </b-card>
+        </b-collapse>
+      </b-list-group-item>
+    </b-list-group>
+  </b-container>
 </template>
-
 <script>
-import ContestTest from "~/components/ContentTest";
-import StartTest from "~/components/StartTest";
-import TestInfo from "~/components/TestInfo";
-import data from "~/test.json";
+import dataTest from "~/tests.json";
 export default {
-  components: {
-    ContestTest,
-    StartTest,
-    TestInfo,
-  },
   data() {
     return {
-      selected: [], // Must be an array reference!
-      questions: data.questions,
-      selectdQuestion: {},
-      indexSelect: 0,
-      timer: null,
-      isStart: false,
-      testInfo: {
-        durationMinute: 15,
-        durationSecond: 0,
-        totalQuestion: 0,
-      },
+      tests: dataTest,
+      keyword: "",
     };
   },
-  computed: {
-    disabledNext() {
-      return this.indexSelect + 1 === this.testInfo.totalQuestion;
-    },
-    disabledPre() {
-      return this.indexSelect === 0;
-    },
-  },
   mounted() {
-    const indexDefault = 0;
-    this.testInfo.totalQuestion = this.questions.length;
-    this.selectdQuestion = this.questions[indexDefault];
-    this.indexSelect = indexDefault;
+    const listTest = JSON.parse(window.localStorage.getItem("list-test"));
+    console.log(listTest);
   },
   methods: {
-    check() {
-      const item = this.selected[this.selected.length - 1];
-      this.selected = [];
-      this.selected.push(item);
+    playTest(id) {
+      this.$router.push(`/test/${id}`);
     },
-    next() {
-      this.indexSelect++;
-      this.selectdQuestion = this.questions[this.indexSelect];
+    find() {
+      this.tests = dataTest.filter((item) => {
+        // return this.toSlug(item.name.toLowerCase()).includes(
+        //   this.toSlug(this.keyword.toLowerCase())
+        // );
+        return item.name.toLowerCase().includes(this.keyword.toLowerCase());
+      });
     },
-    pre() {
-      this.indexSelect--;
-      this.selectdQuestion = this.questions[this.indexSelect];
-    },
-    updateSelect(id, selectedValue) {
-      const item = this.questions.find((ii) => ii.id === id);
-      if (item) {
-        item.selectedValue = selectedValue;
-      }
-    },
-    start() {
-      if (this.testInfo.durationSecond === 0) {
-        this.testInfo.durationMinute -= 1;
-        this.testInfo.durationSecond = 59;
-      } else this.testInfo.durationSecond--;
+    toSlug(str) {
+      // Chuyển hết sang chữ thường
+      str = str.toLowerCase();
 
-      if (this.testInfo.durationMinute === 0) {
-        clearInterval(this.timer);
-      }
+      // xóa dấu
+      str = str
+        .normalize("NFD") // chuyển chuỗi sang unicode tổ hợp
+        .replace(/[\u0300-\u036f]/g, ""); // xóa các ký tự dấu sau khi tách tổ hợp
+
+      // Thay ký tự đĐ
+      str = str.replace(/[đĐ]/g, "d");
+
+      // Xóa ký tự đặc biệt
+      str = str.replace(/([^0-9a-z-\s])/g, "");
+
+      // Xóa khoảng trắng thay bằng ký tự -
+      str = str.replace(/(\s+)/g, "-");
+
+      // Xóa ký tự - liên tiếp
+      str = str.replace(/-+/g, "-");
+
+      // xóa phần dư - ở đầu & cuối
+      str = str.replace(/^-+|-+$/g, "");
+
+      // return
+      return str;
     },
-    startTest() {
-      this.isStart = true;
-      this.timer = setInterval(() => this.start(), 1000);
-    },
-    finishTest() {
-      const data = JSON.stringify(this.questions);
-      window.localStorage.setItem("test", data);
-      this.$router.push("/test-result");
-    },
+    goHistory(){
+      this.$router.push('/test-history')
+    }
   },
 };
 </script>
-<style scoped>
-* >>> ol {
-  text-align: left;
-}
-</style>

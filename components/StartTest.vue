@@ -10,6 +10,9 @@
         <b-button href="#" variant="primary" @click="startTest()"
           >Bắt đầu làm bài</b-button
         >
+        <b-button href="#" class="mt-2" @click="goBack()"
+          >Quay lại chọn đề</b-button
+        >
       </b-card>
       <template v-if="isStart">
         <div>
@@ -28,9 +31,16 @@
         class="mb-2"
         style="max-width: 20rem"
       >
-        <b-button href="#" variant="primary" @click="tryAgain()"
-          >Thử lại</b-button
-        >
+        <div>
+          <b-button href="#" variant="primary" @click="tryAgain()"
+            >Thử lại</b-button
+          >
+        </div>
+        <div>
+          <b-button href="#" class="mt-2" @click="goBack()"
+            >Quay lại chọn đề</b-button
+          >
+        </div>
       </b-card>
     </div>
   </div>
@@ -58,7 +68,10 @@ export default {
       this.$emit("finishTest", true);
     },
     tryAgain() {
-      this.$router.push("/");
+      this.$emit("tryAgain");
+    },
+    goBack() {
+      this.$router.push("/test");
     },
   },
 };
