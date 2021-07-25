@@ -87,6 +87,7 @@ export default {
         totalQuestion: 0,
         title: "",
       },
+      dataSample: dataTest,
     };
   },
   computed: {
@@ -99,8 +100,15 @@ export default {
   },
   mounted() {
     const indexDefault = 0;
-    this.dataTest = dataTest.find(
-      (item) => item.id === parseFloat(this.$route.params.id)
+    this.dataSample = JSON.parse(JSON.stringify(this.dataSample));
+    this.dataTest = {
+      ...this.dataSample.find(
+        (item) => item.id === parseFloat(this.$route.params.id)
+      ),
+    };
+    this.dataTest.questions = this.shuffle(this.dataTest.questions);
+    console.log(
+      this.dataTest.questions.filter((item) => item.selectedValue !== "")
     );
     this.testInfo.durationMinute = this.dataTest.time;
     this.testInfo.title = this.dataTest.name;
@@ -145,21 +153,43 @@ export default {
       this.timer = setInterval(() => this.start(), 1000);
     },
     finishTest() {
+      clearInterval(this.timer);
       const data = JSON.stringify(this.dataTest);
       window.localStorage.setItem("test", data);
       const listTest = JSON.parse(window.localStorage.getItem("list-test"));
       if (!listTest) {
         const newList = [];
-        this.dataTest["date"] = new Date().getTime();
-        newList.push(this.dataTest);
+        const testTm = { ...this.dataTest };
+        testTm["date"] = new Date().getTime();
+        newList.push(testTm);
         window.localStorage.setItem("list-test", JSON.stringify(newList));
       } else {
-        this.dataTest["date"] = new Date().getTime();
-        listTest.push(this.dataTest);
+        const testTm = { ...this.dataTest };
+        testTm["date"] = new Date().getTime();
+        listTest.push(testTm);
         window.localStorage.setItem("list-test", JSON.stringify(listTest));
       }
 
       this.$router.push("/test-result");
+    },
+    shuffle(array) {
+      var currentIndex = array.length,
+        randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
+
+      return array;
     },
   },
 };

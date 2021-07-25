@@ -3,7 +3,11 @@
     <div>
       <b-row>
         <b-col><h1>Chọn đề thi</h1></b-col>
-        <b-col><b-button class="float-right mt-2" @click="goHistory">Lịch sử làm bài</b-button></b-col>
+        <b-col
+          ><b-button class="float-right mt-2" @click="goHistory"
+            >Lịch sử làm bài</b-button
+          ></b-col
+        >
       </b-row>
       <div class="my-2">
         <b-form-input
@@ -45,8 +49,6 @@ export default {
     };
   },
   mounted() {
-    const listTest = JSON.parse(window.localStorage.getItem("list-test"));
-    console.log(listTest);
   },
   methods: {
     playTest(id) {
@@ -87,9 +89,9 @@ export default {
       // return
       return str;
     },
-    goHistory(){
-      this.$router.push('/test-history')
-    }
+    goHistory() {
+      this.$router.push("/test-history");
+    },
   },
 };
 </script>
